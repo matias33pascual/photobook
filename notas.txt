@@ -1,0 +1,18 @@
+Posteo de fotografos
+
+aparecen card con fotos y el avatar de un fotografo con una descripcion 
+de la imagen
+
+la imagen se puede compartir, darle me gusta, agregar a la una lista 
+de favoritos o descargarla
+
+si se hace click en la imagen del avatar, se abre el perfil del usuario y
+se muestran las fotos que subio el, junto a alguna informacion personal random
+
+se le puede contactar por mail al autor
+
+
+las imagenes en favoritos se pueden listar
+
+estaria bueno poder simular la "compra" de imagenes en un carrito, pero quizas
+esto lo deje para otro proyecto.
