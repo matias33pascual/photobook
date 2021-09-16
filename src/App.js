@@ -1,5 +1,13 @@
+import React from "react";
+import { CssBaseline } from "@material-ui/core";
+import AlbumApp from "./components/AlbumApp";
+
 function App() {
-    return <h1>Mat Web</h1>;
+    return (
+        <CssBaseline>
+            <AlbumApp />
+        </CssBaseline>
+    );
 }
 
 export default App;

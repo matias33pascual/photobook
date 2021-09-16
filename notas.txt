@@ -1,16 +1,27 @@
+Paso a Paso
+***********
+
+Armando el prototipo de una PhotoCard:		
+	. poner la cara de alguien en el avatar
+	. poner nombre y profesion random
+	. poner texto descriptivo corto y random
+	. crear un objeto que guarde la imagen y el autor. Esto es lo que	
+		muestra en favoritos, como una lista
+
 Posteo de fotografos
+********************
 
 aparecen card con fotos y el avatar de un fotografo con una descripcion 
 de la imagen
 
-la imagen se puede compartir, darle me gusta, agregar a la una lista 
-de favoritos o descargarla
+la imagen se puede compartir, darle me gusta, agregar a una lista 
+de favoritos, ponerle like o dislike, descargarla
 
-si se hace click en la imagen del avatar, se abre el perfil del usuario y
-se muestran las fotos que subio el, junto a alguna informacion personal random
+si se hace click en el header, se abre el perfil del usuario y
+se muestran las fotos que subio el, junto a alguna informacion personal 
+random
 
 se le puede contactar por mail al autor
-
 
 las imagenes en favoritos se pueden listar
 
