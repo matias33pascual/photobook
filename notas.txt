@@ -5,8 +5,21 @@ Armando el prototipo de una PhotoCard:
 	. poner la cara de alguien en el avatar
 	. poner nombre y profesion random
 	. poner texto descriptivo corto y random
-	. crear un objeto que guarde la imagen y el autor. Esto es lo que	
-		muestra en favoritos, como una lista
+	. checkear con mosh si es correcta la forma de filtrar una lista
+	. implementar los botones compartir y descargar
+	. crear paginacion de 10 publicaciones por pagina, con 3 o 4 paginas
+	. implementar el header con los tabs de favoritos y buscar imagenes
+	. implementar una barra de busqueda y el boton de reload
+	. centrar las imagenes acomodando la grilla
+	. acomodar los colores con una paleta principal
+	. tener un boton de darkmode
+	. tener un cuadro de seleccion de colores (basico) y cambiar los colores en 
+		base a la seleccion
+	. tener un cuadro de seleccion de fuentes (basico) y cambiar las fuentes en
+		base a la seleccion
+	. implementar los perfiles de los fotografos al hacer click en un header de las card
+	. implementar cada perfil de fotografo con un estilo propio
+
 
 Posteo de fotografos
 ********************
