@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { IconButton, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 
 const useStyles = makeStyles({
@@ -57,9 +57,9 @@ const LikesButtons = (props) => {
                     <Typography className={classes.text}>{likes}</Typography>
                     <IconButton onClick={() => handleClick("up")}>
                         {reaction === "up" ? (
-                            <ThumbUpOutlinedIcon fontSize='small' />
+                            <ThumbUpIcon fontSize='small' color='primary' />
                         ) : (
-                            <ThumbUpAltIcon fontSize='small' />
+                            <ThumbUpOutlinedIcon fontSize='small' />
                         )}
                     </IconButton>
                 </Grid>
@@ -67,9 +67,9 @@ const LikesButtons = (props) => {
                     <Typography className={classes.text}>{dislikes}</Typography>
                     <IconButton onClick={() => handleClick("down")}>
                         {reaction === "down" ? (
-                            <ThumbDownOutlinedIcon fontSize='small' />
+                            <ThumbDownIcon fontSize='small' color='primary' />
                         ) : (
-                            <ThumbDownAltIcon fontSize='small' />
+                            <ThumbDownOutlinedIcon fontSize='small' />
                         )}
                     </IconButton>
                 </Grid>

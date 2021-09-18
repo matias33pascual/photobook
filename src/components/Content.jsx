@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
-import { data } from "../utils/data";
+import { getAvatars, getImages, getQuotes, getRandom } from "../utils/data";
 import PhotoCard from "./PhotoCard";
 
 const Content = () => {
-    const cardsList = data;
+    const [cardsList, setCardsList] = useState([]);
     const favoriteList = [];
+
+    useEffect(() => {
+        async function fetchData() {
+            const avatar = getAvatars();
+            const images = getImages();
+            const quotes = await getQuotes();
+
+            const newCardList = [];
+            for (let i = 0; i < 20; i++) {
+                const { first_name, last_name, url } = avatar[getRandom(0, 49)];
+
+                newCardList.push({
+                    id: i,
+                    author: first_name,
+                    subheader: last_name,
+                    avatar: url,
+                    image: images[i],
+                    favorite: false,
+                    likes: getRandom(7000, 2500),
+                    dislikes: getRandom(500, 50),
+                    quote: quotes[i],
+                });
+            }
+
+            setCardsList(newCardList);
+        }
+
+        fetchData();
+    }, []);
 
     const handleClick = (card) => {
         card.favorite = !card.favorite;
@@ -22,8 +51,6 @@ const Content = () => {
 
         let favoriteListFiltered = { ...favoriteList };
         favoriteListFiltered = removeEmptyKeys(favoriteListFiltered);
-
-        console.log(favoriteListFiltered);
     };
 
     return (
@@ -32,9 +59,11 @@ const Content = () => {
                 {cardsList.map((card) => (
                     <Grid item key={card.id}>
                         <PhotoCard
+                            avatar={card.avatar}
                             author={card.author}
-                            subHeader={card.subheader}
+                            subheader={card.subheader}
                             image={card.image}
+                            quote={card.quote}
                             favorite={card.favorite}
                             likes={card.likes}
                             dislikes={card.dislikes}

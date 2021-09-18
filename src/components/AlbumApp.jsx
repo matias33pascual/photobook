@@ -5,7 +5,7 @@ import Header from "./Header";
 const AlbumApp = () => {
     return (
         <>
-            {/* <Header /> */}
+            <Header />
             <Content />
         </>
     );

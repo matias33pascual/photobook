@@ -8,6 +8,7 @@ import {
     CardContent,
     CardHeader,
     CardMedia,
+    AccordionSummary,
     Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,45 +18,63 @@ import LikesButtons from "./buttons/LikesButtons";
 const useStyles = makeStyles({
     root: {
         width: "300px",
-        height: "360px",
-        border: "1px solid black",
+        height: "350px",
+        border: "1px solid rgb(220,220,220)",
     },
     header: {
         backgroundColor: "rgb(150,150,255)",
-        border: "1px solid white",
         height: "60px",
     },
     media: {
-        border: "1px solid white",
+        marginTop: "1px",
         paddingTop: "56.25%",
-        height: "100px",
     },
     content: {
-        border: "1px solid white",
+        margin: "-5px",
+        marginTop: "-10px",
     },
 });
 
 const PhotoCard = (props) => {
     const classes = useStyles();
-    const { image, favorite, author, subHeader, likes, dislikes } = props;
+    const {
+        avatar,
+        author,
+        subheader,
+        image,
+        quote,
+        favorite,
+        likes,
+        dislikes,
+    } = props;
 
     return (
         <Card className={classes.root} variant='outlined'>
             <CardActionArea>
                 <CardHeader
                     className={classes.header}
-                    avatar={<Avatar>M</Avatar>}
+                    avatar={
+                        <Avatar
+                            src={avatar}
+                            alt={author}
+                            style={{
+                                width: 54,
+                                height: 54,
+                                marginLeft: -12,
+                            }}
+                        />
+                    }
                     title={author}
-                    subheader={subHeader}
+                    subheader={subheader}
                 />
             </CardActionArea>
 
             <CardMedia className={classes.media} image={image} />
 
             <Box className={classes.content}>
-                <CardContent>
+                <CardContent style={{ height: "75px" }}>
                     <Typography align='justify' variant='body2'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        {quote}
                     </Typography>
                 </CardContent>
 

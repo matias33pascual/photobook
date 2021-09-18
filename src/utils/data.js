@@ -1,60 +1,37 @@
-export const data = [
-    {
-        id: 0,
-        image: "https://picsum.photos/300?random=0",
-        author: "A",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-    {
-        id: 1,
-        image: "https://picsum.photos/300?random=1",
-        author: "B",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-    {
-        id: 2,
-        image: "https://picsum.photos/300?random=2",
-        author: "C",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-    {
-        id: 3,
-        image: "https://picsum.photos/300?random=3",
-        author: "D",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-    {
-        id: 4,
-        image: "https://picsum.photos/300?random=4",
-        author: "E",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-    {
-        id: 5,
-        image: "https://picsum.photos/300?random=5",
-        author: "F",
-        subheader: "Xzun",
-        favorite: false,
-        likes: getRandom(7000, 2500),
-        dislikes: getRandom(500, 50),
-    },
-];
+import axios from "axios";
+import { avatars } from "../mockdata/avatars";
 
-function getRandom(min, max) {
+export function getImages(count = 20) {
+    const imagesList = [];
+    for (let i = 0; i < count; i++) {
+        imagesList.push(getImage());
+    }
+    return imagesList;
+}
+
+export function getAvatars() {
+    return avatars;
+}
+
+export async function getQuotes() {
+    const { data: quotes } = await axios.get(
+        "https://api.quotable.io/quotes?page=" +
+            getRandom(1, 30) +
+            "minLength=10&maxLength=70"
+    );
+
+    const quotesList = [];
+    quotes.results.forEach((element) => {
+        quotesList.push(element.content);
+    });
+
+    return quotesList;
+}
+
+export function getRandom(min = 1, max = 1000) {
     return Math.ceil(Math.random() * (max - min) + min);
+}
+
+function getImage() {
+    return "https://picsum.photos/600?random=" + getRandom(1, 100);
 }

@@ -1,10 +1,9 @@
 Paso a Paso
 ***********
 
-Armando el prototipo de una PhotoCard:		
-	. poner la cara de alguien en el avatar
-	. poner nombre y profesion random
-	. poner texto descriptivo corto y random
+Aprendiendo: useEffect
+
+Armando el prototipo de una PhotoCard:					
 	. checkear con mosh si es correcta la forma de filtrar una lista
 	. implementar los botones compartir y descargar
 	. crear paginacion de 10 publicaciones por pagina, con 3 o 4 paginas
@@ -40,3 +39,27 @@ las imagenes en favoritos se pueden listar
 
 estaria bueno poder simular la "compra" de imagenes en un carrito, pero quizas
 esto lo deje para otro proyecto.
+
+-------------------------------------
+
+Ayuda memoria
+
+useEffect(() => {
+        console.log("hola!");
+
+        return () => {
+            console.log("borrando todo al desmontar el componente");
+        };
+    }, [variableQueHaceQueSeEjecuteLaFuncion]);
+
+
+const a = document.createElement("a");
+            a.href = URL.createObjectURL(
+                new Blob([JSON.stringify(avatar, null, 2)], {
+                    type: "text/plain",
+                })
+            );
+            a.setAttribute("download", "data.txt");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
