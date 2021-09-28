@@ -1,39 +1,51 @@
 import React from "react";
 import {
     Avatar,
-    Box,
     Card,
     CardActionArea,
     CardActions,
     CardContent,
     CardHeader,
     CardMedia,
-    AccordionSummary,
     Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteButton from "./buttons/FavoriteButton";
 import LikesButtons from "./buttons/LikesButtons";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        width: "300px",
-        height: "350px",
-        border: "1px solid rgb(220,220,220)",
+        height: "100%",
     },
     header: {
-        backgroundColor: "rgb(150,150,255)",
-        height: "60px",
+        marginTop: "-10px",
+        marginLeft: "-10px",
+        paddingBottom: "7px",
+        backgroundColor: "rgb(90,100,230)",
+    },
+    avatar: {
+        width: "50px",
+        height: "50px",
     },
     media: {
-        marginTop: "1px",
         paddingTop: "56.25%",
     },
-    content: {
-        margin: "-5px",
-        marginTop: "-10px",
+    cardContent: {
+        [theme.breakpoints.up("md")]: {
+            height: "100px",
+        },
+        [theme.breakpoints.only("sm")]: {
+            height: "110px",
+        },
+        [theme.breakpoints.only("xs")]: {
+            height: "80px",
+        },
     },
-});
+    cardActions: {
+        height: "10px",
+        marginBottom: "15px",
+    },
+}));
 
 const PhotoCard = (props) => {
     const classes = useStyles();
@@ -49,7 +61,7 @@ const PhotoCard = (props) => {
     } = props;
 
     return (
-        <Card className={classes.root} variant='outlined'>
+        <Card className={classes.root} variant='elevation'>
             <CardActionArea>
                 <CardHeader
                     className={classes.header}
@@ -57,11 +69,7 @@ const PhotoCard = (props) => {
                         <Avatar
                             src={avatar}
                             alt={author}
-                            style={{
-                                width: 54,
-                                height: 54,
-                                marginLeft: -12,
-                            }}
+                            className={classes.avatar}
                         />
                     }
                     title={author}
@@ -71,21 +79,16 @@ const PhotoCard = (props) => {
 
             <CardMedia className={classes.media} image={image} />
 
-            <Box className={classes.content}>
-                <CardContent style={{ height: "75px" }}>
-                    <Typography align='justify' variant='body2'>
-                        {quote}
-                    </Typography>
-                </CardContent>
+            <CardContent className={classes.cardContent}>
+                <Typography align='justify' variant='body2'>
+                    {quote}
+                </Typography>
+            </CardContent>
 
-                <CardActions disableSpacing>
-                    <FavoriteButton
-                        onClick={props.onClick}
-                        favorite={favorite}
-                    />
-                    <LikesButtons likes={likes} dislikes={dislikes} />
-                </CardActions>
-            </Box>
+            <CardActions disableSpacing className={classes.cardActions}>
+                <FavoriteButton onClick={props.onClick} favorite={favorite} />
+                <LikesButtons likes={likes} dislikes={dislikes} />
+            </CardActions>
         </Card>
     );
 };

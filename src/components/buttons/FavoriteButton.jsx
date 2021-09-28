@@ -15,7 +15,7 @@ const FavoriteButton = (props) => {
         return favorite ? (
             <FavoriteIcon color='secondary' fontSize='small' />
         ) : (
-            <FavoriteBorderIcon color='action' fontSize='small' />
+            <FavoriteBorderIcon fontSize='small' />
         );
     };
 
