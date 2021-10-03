@@ -8,7 +8,7 @@ export async function fetchData() {
     const quotes = await getQuotes();
 
     const newCardList = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 18; i++) {
         const { first_name, last_name, url } = avatar[getRandom(0, 49)];
 
         newCardList.push({

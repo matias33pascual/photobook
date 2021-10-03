@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     Avatar,
     Card,
@@ -12,22 +13,28 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteButton from "./buttons/FavoriteButton";
 import LikesButtons from "./buttons/LikesButtons";
+import ShareButton from "./buttons/ShareButton";
+import DownloadButton from "./buttons/DownloadButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         height: "100%",
+        minWidth: "240px",
     },
     header: {
         marginTop: "-10px",
-        marginLeft: "-10px",
+        marginLeft: "-5px",
         paddingBottom: "7px",
         backgroundColor: "rgb(90,100,230)",
+        textDecoration: "none",
+        color: "inherit",
     },
     avatar: {
         width: "50px",
         height: "50px",
     },
     media: {
+        height: "0px",
         paddingTop: "56.25%",
     },
     cardContent: {
@@ -52,7 +59,8 @@ const PhotoCard = (props) => {
     const {
         avatar,
         author,
-        subheader,
+        authorPage,
+        subheader: lastName,
         image,
         quote,
         favorite,
@@ -61,7 +69,7 @@ const PhotoCard = (props) => {
     } = props;
 
     return (
-        <Card className={classes.root} variant='elevation'>
+        <Card className={classes.root} raised>
             <CardActionArea>
                 <CardHeader
                     className={classes.header}
@@ -73,11 +81,17 @@ const PhotoCard = (props) => {
                         />
                     }
                     title={author}
-                    subheader={subheader}
+                    subheader={lastName}
+                    component={Link}
+                    to={authorPage}
                 />
             </CardActionArea>
 
-            <CardMedia className={classes.media} image={image} />
+            <CardMedia
+                className={classes.media}
+                image={image}
+                title={lastName}
+            />
 
             <CardContent className={classes.cardContent}>
                 <Typography align='justify' variant='body2'>
@@ -88,6 +102,8 @@ const PhotoCard = (props) => {
             <CardActions disableSpacing className={classes.cardActions}>
                 <FavoriteButton onClick={props.onClick} favorite={favorite} />
                 <LikesButtons likes={likes} dislikes={dislikes} />
+                <ShareButton />
+                <DownloadButton />
             </CardActions>
         </Card>
     );

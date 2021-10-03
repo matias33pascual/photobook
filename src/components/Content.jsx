@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import PhotoCard from "./PhotoCard";
-import { fetchData } from "../mockdata/data";
 import { removeEmptyKeys } from "../utils/functions";
 
-const Content = () => {
-    const [cardsList, setCardsList] = useState([]);
+const Content = (props) => {
+    const { data: cardsList } = props;
     const favoriteList = [];
-
-    useEffect(() => {
-        getData();
-    }, []);
-
-    const getData = async () => {
-        const data = await fetchData();
-        setCardsList(data);
-    };
 
     const handleClick = (card) => {
         card.favorite = !card.favorite;
@@ -38,6 +28,7 @@ const Content = () => {
         <PhotoCard
             avatar={card.avatar}
             author={card.author}
+            authorPage={getAuthorPage(card)}
             subheader={card.subheader}
             image={card.image}
             quote={card.quote}
@@ -48,12 +39,25 @@ const Content = () => {
         />
     );
 
+    const getAuthorPage = (card) => {
+        const name = card.author.trim();
+        const lastName = card.subheader.trim();
+        const authorPage = `/ExampleNeonPage/${
+            name + lastName
+        }?name=${name}&lastName=${lastName}`;
+
+        return authorPage;
+    };
+
     return (
         <>
-            <Grid container spacing={1}>
+            <Grid
+                container
+                spacing={1}
+                style={{ width: "100%", paddingLeft: "8px" }}>
                 {cardsList.map((card) => {
                     return (
-                        <Grid item key={card.id} xs={12} sm={6} md={4}>
+                        <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
                             {getCard(card)}
                         </Grid>
                     );

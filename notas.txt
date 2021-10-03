@@ -4,14 +4,15 @@ Paso a Paso
 Aprendiendo: useEffect
 
 Armando el prototipo de una PhotoCard:						
+    . los likes y dislikes deben ir en el albumapp
+    . la lista de favoritos debera ir en el albumapp
 	. checkear con mosh si es correcta la forma de filtrar una lista
 	. implementar los botones compartir y descargar
 	. crear paginacion de 10 publicaciones por pagina, con 3 o 4 paginas
 	. implementar el header con los tabs de favoritos y buscar imagenes
 	. implementar una barra de busqueda y el boton de reload	
 	. acomodar los colores con una paleta principal
-	. tener un boton de darkmode	
-	. implementar los perfiles de los fotografos al hacer click en un header de las card
+	. tener un boton de darkmode		
 	. implementar cada perfil de fotografo con un estilo propio
 
 
