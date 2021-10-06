@@ -24,19 +24,21 @@ const Content = (props) => {
         favoriteListFiltered = removeEmptyKeys(favoriteListFiltered);
     };
 
-    const getCard = (card) => (
-        <PhotoCard
-            avatar={card.avatar}
-            author={card.author}
-            authorPage={getAuthorPage(card)}
-            subheader={card.subheader}
-            image={card.image}
-            quote={card.quote}
-            favorite={card.favorite}
-            likes={card.likes}
-            dislikes={card.dislikes}
-            onClick={() => handleClick(card)}
-        />
+    const getPhotoCard = (card) => (
+        <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
+            <PhotoCard
+                avatar={card.avatar}
+                author={card.author}
+                authorPage={getAuthorPage(card)}
+                subheader={card.subheader}
+                image={card.image}
+                quote={card.quote}
+                favorite={card.favorite}
+                likes={card.likes}
+                dislikes={card.dislikes}
+                onClick={() => handleClick(card)}
+            />
+        </Grid>
     );
 
     const getAuthorPage = (card) => {
@@ -51,17 +53,14 @@ const Content = (props) => {
 
     return (
         <>
-            <Grid
-                container
-                spacing={1}
-                style={{ width: "100%", paddingLeft: "8px" }}>
-                {cardsList.map((card) => {
-                    return (
-                        <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
-                            {getCard(card)}
-                        </Grid>
-                    );
-                })}
+            <Grid container spacing={1}>
+                {cardsList.map(
+                    (card) =>
+                        card.author
+                            .toLowerCase()
+                            .includes(props.filter.toLowerCase()) &&
+                        getPhotoCard(card)
+                )}
             </Grid>
         </>
     );
