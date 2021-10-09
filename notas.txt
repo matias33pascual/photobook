@@ -4,6 +4,7 @@ Paso a Paso
 Aprendiendo: useEffect
 
 Armando el prototipo de una PhotoCard:	
+    . emprolijar PhotoCardList
     . cuando se vuelve o recarga la pagina, la busqueda debe quedar en "" o en el ultimo valor buscado
     . los likes y dislikes deben ir en el albumapp
     . la lista de favoritos debera ir en el albumapp

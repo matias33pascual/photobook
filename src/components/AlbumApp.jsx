@@ -18,18 +18,15 @@ const AlbumApp = () => {
     };
 
     useEffect(async () => {
-        if (data.length === 0) await getNewData();
+        if (!data.length) await getNewData();
     }, []);
 
     const getNewData = async () => {
         // getNewData simulates a waiting time
-
         setData(null);
         setFilter("");
-
         const newList = await fetchData();
         await new Promise((resolve) => setTimeout(resolve, 1000));
-
         setData(newList);
     };
 
@@ -49,7 +46,7 @@ const AlbumApp = () => {
                         <HomePage
                             data={data}
                             filter={filter}
-                            onClick={handleReloadClick}
+                            onRefreshClick={handleReloadClick}
                             onSearchChange={handleSearchChange}
                         />
                     )}
