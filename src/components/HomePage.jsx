@@ -5,7 +5,14 @@ import Header from "./Header";
 
 const HomePage = (props) => {
     const [selectedTab, setSelectedTab] = useState(0);
-    const { filter, onRefreshClick, onSearchChange } = props;
+    const {
+        data,
+        filter,
+        favoriteList,
+        onRefreshClick,
+        onSearchChange,
+        onFavoriteClick,
+    } = props;
 
     const handleTabChange = (event, value) => {
         setSelectedTab(value);
@@ -25,9 +32,11 @@ const HomePage = (props) => {
             <Grid item sx={12}>
                 {props.data ? (
                     <Content
-                        data={props.data}
-                        filter={props.filter}
+                        data={data}
+                        filter={filter}
+                        favoriteList={favoriteList}
                         selectedTab={selectedTab}
+                        onFavoriteClick={onFavoriteClick}
                     />
                 ) : (
                     <CircularProgress />

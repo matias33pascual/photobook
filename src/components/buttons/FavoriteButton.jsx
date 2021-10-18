@@ -1,26 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { IconButton } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 const FavoriteButton = (props) => {
-    const [favorite, setFavorite] = useState(props.favorite || false);
-
-    const handleClick = () => {
-        setFavorite(!favorite);
-        if (props.onClick) props.onClick();
-    };
-
-    const renderIcon = () => {
-        return favorite ? (
-            <FavoriteIcon color='secondary' fontSize='small' />
-        ) : (
-            <FavoriteBorderIcon fontSize='small' />
-        );
-    };
+    const { id, onFavoriteClick, favorite } = props;
 
     return (
-        <IconButton onClick={() => handleClick()}>{renderIcon()}</IconButton>
+        <IconButton onClick={() => onFavoriteClick(id)}>
+            {favorite ? (
+                <FavoriteIcon color='secondary' fontSize='small' />
+            ) : (
+                <FavoriteBorderIcon fontSize='small' />
+            )}
+        </IconButton>
     );
 };
 

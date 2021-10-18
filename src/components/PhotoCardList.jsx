@@ -4,7 +4,27 @@ import PhotoCard from "./PhotoCard";
 import { removeEmptyKeys } from "../utils/functions";
 
 const PhotoCardList = (props) => {
-    const { data, filter } = props;
+    const { data, filter, onFavoriteClick } = props;
+
+    const getPhotoCard = (card) => {
+        return (
+            <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
+                <PhotoCard
+                    id={card.id}
+                    avatar={card.avatar}
+                    firstName={card.firstName}
+                    lastName={card.lastName}
+                    image={card.image}
+                    quote={card.quote}
+                    favorite={card.favorite}
+                    likes={card.likes}
+                    dislikes={card.dislikes}
+                    onFavoriteClick={onFavoriteClick}
+                    authorPage={getAuthorPage(card)}
+                />
+            </Grid>
+        );
+    };
 
     return (
         <>
@@ -14,7 +34,7 @@ const PhotoCardList = (props) => {
                 style={{ width: "100%", margin: "auto" }}>
                 {data.map(
                     (card) =>
-                        card.author
+                        card.firstName
                             .toLowerCase()
                             .includes(filter.toLowerCase()) &&
                         getPhotoCard(card)
@@ -27,47 +47,11 @@ const PhotoCardList = (props) => {
 export default PhotoCardList;
 
 const getAuthorPage = (card) => {
-    const name = card.author.trim();
-    const lastName = card.subheader.trim();
+    const firstName = card.firstName.trim();
+    const lastName = card.lastName.trim();
     const authorPage = `/ExampleNeonPage/${
-        name + lastName
-    }?name=${name}&lastName=${lastName}`;
+        firstName + lastName
+    }?name=${firstName}&lastName=${lastName}`;
 
     return authorPage;
-};
-
-const getPhotoCard = (card) => (
-    <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
-        <PhotoCard
-            avatar={card.avatar}
-            author={card.author}
-            authorPage={getAuthorPage(card)}
-            subheader={card.subheader}
-            image={card.image}
-            quote={card.quote}
-            favorite={card.favorite}
-            likes={card.likes}
-            dislikes={card.dislikes}
-            onClick={() => handleClick(card)}
-        />
-    </Grid>
-);
-
-const favoriteList = [];
-
-const handleClick = (card) => {
-    card.favorite = !card.favorite;
-
-    if (card.favorite) {
-        favoriteList["card:" + card.id] = {
-            id: card.id,
-            author: card.author,
-            imageSrc: card.image,
-        };
-    } else {
-        favoriteList["card:" + card.id] = null;
-    }
-
-    let favoriteListFiltered = { ...favoriteList };
-    favoriteListFiltered = removeEmptyKeys(favoriteListFiltered);
 };

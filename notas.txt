@@ -1,9 +1,25 @@
 Paso a Paso
 ***********
 
-Aprendiendo: useEffect
+una card tiene 
+	nombre
+	apellido
+	foto
+	frase
+	likes
+	dislikes
+
+una card puede estar en favoritos
+	
+una card es random
+	el id es random
+    
 
 Armando el prototipo de una PhotoCard:	
+    . cuando pasa a favoritos, va a tener que tener un nuevo id el tema del id con las fotos, likes, etc, 
+        o quizas generar ids aleatorios en base al tiempo. Pensar una solucion.
+        
+    . luego de terminado el proyecto, implementarlo alguna parte con typescript    
     . emprolijar PhotoCardList
     . cuando se vuelve o recarga la pagina, la busqueda debe quedar en "" o en el ultimo valor buscado
     . los likes y dislikes deben ir en el albumapp
@@ -15,6 +31,20 @@ Armando el prototipo de una PhotoCard:
 	. acomodar los colores con una paleta principal
 	. tener un boton de darkmode		
 	. implementar cada perfil de fotografo con un estilo propio
+
+Jerarquia de componentes
+************************
+
+AlbumApp: switch, routes, data, filter, favoriteList
+
+    1. HomePage (la informacion de content depende de header)
+        2. Header
+            Tabs
+        2. Content
+            PhotoCardList
+            FavoriteList
+
+    1. AuthorPage
 
 
 Posteo de fotografos
@@ -49,14 +79,36 @@ useEffect(() => {
         };
     }, [variableQueHaceQueSeEjecuteLaFuncion]);
 
+/////////////////////////////////////////////////////////
+va dentro de la funcion
 
 const a = document.createElement("a");
             a.href = URL.createObjectURL(
-                new Blob([JSON.stringify(avatar, null, 2)], {
+                new Blob([JSON.stringify(DATO_AQUI, null, 2)], {
                     type: "text/plain",
                 })
             );
-            a.setAttribute("download", "data.txt");
+            a.setAttribute("download", "NOMBRE_ARCHIVO.EXTENSION");
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+
+/////////////////////////////////////////////////////////////////
+
+-- redireccionando las paginas con tabs
+
+const handleChange = (event, newValue) => {
+    history.push(`/hombe/${tabNameToIndex[newValue]}`);
+    setSelectedTab(newValue);
+};
+
+/////////////////////////////////////////////////////////////////
+
+const getNewData = async () => {
+        // getNewData simulates a waiting time
+        setData(null);
+        setFilter("");
+        const newList = await fetchData();
+        await new Promise((resolve) => setTimeout(resolve, 1));
+        setData(newList);
+    };

@@ -19,7 +19,8 @@ import DownloadButton from "./buttons/DownloadButton";
 const useStyles = makeStyles((theme) => ({
     root: {
         height: "100%",
-        minWidth: "240px",
+        minWidth: "250px",
+        maxWidth: "200px",
     },
     header: {
         marginTop: "-10px",
@@ -57,13 +58,15 @@ const useStyles = makeStyles((theme) => ({
 const PhotoCard = (props) => {
     const classes = useStyles();
     const {
+        id,
         avatar,
-        author,
+        firstName,
         authorPage,
-        subheader: lastName,
+        lastName,
         image,
         quote,
         favorite,
+        onFavoriteClick,
         likes,
         dislikes,
     } = props;
@@ -76,11 +79,11 @@ const PhotoCard = (props) => {
                     avatar={
                         <Avatar
                             src={avatar}
-                            alt={author}
+                            alt={firstName}
                             className={classes.avatar}
                         />
                     }
-                    title={author}
+                    title={firstName}
                     subheader={lastName}
                     component={Link}
                     to={authorPage}
@@ -100,7 +103,11 @@ const PhotoCard = (props) => {
             </CardContent>
 
             <CardActions disableSpacing className={classes.cardActions}>
-                <FavoriteButton onClick={props.onClick} favorite={favorite} />
+                <FavoriteButton
+                    onFavoriteClick={onFavoriteClick}
+                    id={id}
+                    favorite={favorite}
+                />
                 <LikesButtons likes={likes} dislikes={dislikes} />
                 <ShareButton />
                 <DownloadButton />
