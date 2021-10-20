@@ -1,6 +1,8 @@
 Paso a Paso
 ***********
 
+lista la paginacion, ahora ir con mosh y mejorarla
+
 una card tiene 
 	nombre
 	apellido
@@ -10,10 +12,8 @@ una card tiene
 	dislikes
 
 una card puede estar en favoritos
-	
-una card es random
-	el id es random
-    
+
+usnado lodash
 
 Armando el prototipo de una PhotoCard:	
     . cuando pasa a favoritos, va a tener que tener un nuevo id el tema del id con las fotos, likes, etc, 

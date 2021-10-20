@@ -11,6 +11,7 @@ const Content = (props) => {
             {selectedTab === 0 && (
                 <PhotoCardList
                     data={data}
+                    cardsPerPage={10}
                     filter={filter}
                     onFavoriteClick={onFavoriteClick}
                 />

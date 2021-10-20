@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./HomePage";
 import ExampleNeonPage from "./ExampleNeonPage";
 import NotFound from "./NotFound";
-import { getData } from "../mockdata/data";
+import { myData } from "./../mockdata/myData";
 
 const AlbumApp = () => {
     const [data, setData] = useState([]);
@@ -47,11 +47,10 @@ const AlbumApp = () => {
     }, []);
 
     const getNewData = async () => {
-        // getNewData simulates a waiting time
         setData(null);
         setFilter("");
-        const newData = await getData();
-        await new Promise((resolve) => setTimeout(resolve, 1));
+        const newData = myData;
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // simulating a waiting time
         setData(newData);
     };
 

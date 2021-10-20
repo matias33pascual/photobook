@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import PhotoCard from "./PhotoCard";
-import { removeEmptyKeys } from "../utils/functions";
+import Pagination from "@mui/material/Pagination";
+import _ from "lodash";
 
 const PhotoCardList = (props) => {
-    const { data, filter, onFavoriteClick } = props;
+    const { data, filter, onFavoriteClick, cardsPerPage } = props;
+
+    const count = Math.ceil(data.length / cardsPerPage);
+
+    const [page, setPage] = useState(0);
 
     const getPhotoCard = (card) => {
         return (
@@ -26,13 +31,23 @@ const PhotoCardList = (props) => {
         );
     };
 
+    const handleChange = (event, page) => {
+        setPage(page);
+    };
+
     return (
         <>
+            <Pagination
+                count={count}
+                onChange={handleChange}
+                variant='outlined'
+                shape='rounded'
+            />
             <Grid
                 container
                 spacing={1}
                 style={{ width: "100%", margin: "auto" }}>
-                {data.map(
+                {paginate(data, page, cardsPerPage).map(
                     (card) =>
                         card.firstName
                             .toLowerCase()
@@ -54,4 +69,9 @@ const getAuthorPage = (card) => {
     }?name=${firstName}&lastName=${lastName}`;
 
     return authorPage;
+};
+
+const paginate = (items, pageNumber, pageSize) => {
+    const startIndex = (pageNumber - 1) * pageSize;
+    return _(items).slice(startIndex).take(pageSize).value();
 };
