@@ -1,14 +1,15 @@
-import React from "react";
-import { CssBaseline } from "@material-ui/core";
-import AlbumApp from "./components/AlbumApp";
-import Test from "./components/Test";
+import React from 'react';
+import LoginForm from './components/userAccount/LoginForm';
+import RegisterForm from './components/userAccount/RegisterForm';
+import UserProfile from './components/userAccount/UserProfile'
 
-function App() {
+const App = () => {
     return (
-        <CssBaseline>
-            {/* <Test /> */}
-            <AlbumApp />
-        </CssBaseline>
+        <>
+            <RegisterForm />
+            {/* <LoginForm /> */ }
+            <UserProfile />
+        </>
     );
 }
 
