@@ -1,3 +1,5 @@
 {
-	"apiCreateUser": "http://localhost:5001/Users/create"
+	"apiURL":"http://localhost:5001/",
+	"createUser": "Users/create",
+	"registerUser": "Users/register"	
 }
