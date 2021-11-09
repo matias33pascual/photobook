@@ -1,0 +1,3 @@
+{
+	"apiCreateUser": "http://localhost:5001/Users/create"
+}

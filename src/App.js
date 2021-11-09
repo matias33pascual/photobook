@@ -1,16 +1,23 @@
-import React from 'react';
-import LoginForm from './components/userAccount/LoginForm';
-import RegisterForm from './components/userAccount/RegisterForm';
-import UserProfile from './components/userAccount/UserProfile'
+import React from "react";
+import Login from "./components/userAccount/Login";
+import Register from "./components/userAccount/Register";
+import UserProfile from "./components/userAccount/UserProfile";
+import { Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
     return (
         <>
-            <RegisterForm />
-            {/* <LoginForm /> */ }
-            <UserProfile />
+            <ToastContainer />
+            <Switch>
+                <Route path='/register' component={Register} />
+                <Route path='/loginForm' component={Login} />
+                <Route path='/userProfile' component={UserProfile} />
+                <Route path='/' component={Register} />
+            </Switch>
         </>
     );
-}
+};
 
 export default App;
