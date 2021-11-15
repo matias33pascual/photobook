@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [account, setAccount] = useState({ email: "", password: "" });
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { data: post } = await axios.get(
-            "https://jsonplaceholder.typicode.com/posts"
-        );
 
-        console.log({ data: post });
+        try {
+            await userService.loginUser(user);
+        } catch (ex) {
+            // TODO: check error y mostrar algo en pantalla
+        }
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setAccount((previousAccountData) => ({
-            ...previousAccountData,
-            [name]: value,
-        }));
+        const newUserData = { ...user };
+        newUserData[e.target.name] = e.target.value;
+        setUser(newUserData);
     };
 
     return (
@@ -29,7 +29,7 @@ const Login = () => {
             <form action='' onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email</label>
                 <input
-                    value={account.email}
+                    value={user.email}
                     onChange={handleChange}
                     name='email'
                     id='email'
@@ -39,7 +39,7 @@ const Login = () => {
 
                 <label htmlFor='password'>Password</label>
                 <input
-                    value={account.password}
+                    value={user.password}
                     onChange={handleChange}
                     name='password'
                     id='password'

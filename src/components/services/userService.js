@@ -18,3 +18,13 @@ export function registerUser(user) {
         token: user.token,
     });
 }
+
+export function loginUser(user) {
+    return httpServices.post(api + config.loginUser, {
+        username: user.email,
+        password: user.password,
+        client_id: "service.client",
+        client_secret: "secret",
+        grand_type: "password",
+    });
+}
