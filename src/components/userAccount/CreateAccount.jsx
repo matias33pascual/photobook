@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import httpServices from "../services/httpServices";
 import config from "../services/config.json";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import * as userService from "../services/userService";
 
-const Register = () => {
+const CreateAccount = () => {
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -31,7 +31,7 @@ const Register = () => {
 
     return (
         <div>
-            <h1>Register</h1>
+            <h1>Creando tu cuenta de usuario</h1>
             <form action='' onSubmit={handleSubmit}>
                 <label htmlFor='firstName'>Nombre</label>
                 <input
@@ -59,10 +59,10 @@ const Register = () => {
                     value={user.email}
                     onChange={handleChange}
                 />
-                <button type='submit'>Register</button>
+                <button type='submit'>Crear</button>
             </form>
         </div>
     );
 };
 
-export default Register;
+export default CreateAccount;

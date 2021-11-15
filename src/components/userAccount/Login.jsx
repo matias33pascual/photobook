@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import * as userService from "../services/userService";
 
 const Login = () => {
     const [user, setUser] = useState({

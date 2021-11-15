@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import logger from "./components/services/logServices";
+// import logger from "./components/services/logServices";
 import App from "./App";
 
-logger.init();
+// logger.init();
 
 ReactDOM.render(
     <React.StrictMode>
