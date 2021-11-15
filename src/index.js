@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-// import logger from "./components/services/logServices";
+import CssBaseline from '@mui/material/CssBaseline';
 import App from "./App";
-
+// import logger from "./components/services/logServices";
 // logger.init();
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
+            <CssBaseline />
             <App />
         </BrowserRouter>
     </React.StrictMode>,
