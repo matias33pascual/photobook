@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getRandom } from "../utils/functions";
+import { getRandom } from "../../../utils/functions";
 
 export const getData = async () => [
     {

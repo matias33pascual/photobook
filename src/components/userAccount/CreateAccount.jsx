@@ -9,6 +9,7 @@ import { Grid } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import { Modal } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const CreateAccount = () => {
     const [user, setUser] = useState({
@@ -45,34 +46,84 @@ const CreateAccount = () => {
         setModal(true);
     };
 
+    const useStyle = makeStyles({
+        paper: {
+            width: 400,
+            padding: 10,
+        },
+        title: {
+            paddingTop: 10,
+        },
+        field: {
+            marginTop: 20,
+            marginBottom: 20,
+            display: "block",
+        },
+    });
+
+    const classes = useStyle();
+
     const body = (
         <Container maxWidth='sm'>
-            <Grid container direction='column'>
-                <Paper elevation={8}>
-                    <Grid item>
-                        <Typography>Creando tu cuenta</Typography>
-                    </Grid>
-                    <Grid item>
-                        <TextField label='Nombre' />
-                    </Grid>
-                    <Grid item>
-                        <TextField label='Apellido' />
-                    </Grid>
-                    <Grid item>
-                        <TextField label='Email' />
-                    </Grid>
-                    <Grid item>
-                        <Button>Crear</Button>
-                        <Button>Cancelar</Button>
-                    </Grid>
-                </Paper>
-            </Grid>
+            <Paper elevation={8} className={classes.paper}>
+                <Typography
+                    variant='h5'
+                    color='primary'
+                    align='center'
+                    gutterBottom
+                    className={classes.title}>
+                    Creando tu cuenta
+                </Typography>
+                <form action='' noValidate autoComplete='off'>
+                    <TextField
+                        variant='outlined'
+                        label='Nombre'
+                        color='secondary'
+                        fullWidth
+                        required
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        className={classes.field}
+                    />
+                    <TextField
+                        variant='outlined'
+                        label='Apellido'
+                        color='secondary'
+                        required
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        className={classes.field}
+                    />
+                    <TextField
+                        variant='outlined'
+                        label='Email'
+                        color='secondary'
+                        required
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        className={classes.field}
+                    />
+                    <Button
+                        type='submit'
+                        color='secondary'
+                        variant='contained'
+                        size='small'>
+                        Crear
+                    </Button>
+                </form>
+            </Paper>
         </Container>
     );
 
     return (
         <>
             <Button onClick={() => openModal()}>Abrir</Button>
+            {body}
             <Modal open={modal} onClose={changeModalState}>
                 {body}
             </Modal>

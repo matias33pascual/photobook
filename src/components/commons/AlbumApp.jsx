@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./HomePage";
 import ExampleNeonPage from "./ExampleNeonPage";
 import NotFound from "./NotFound";
-import { myData } from "./../mockdata/myData";
+import { myData } from "../services/mockdata/myData";
 
 const AlbumApp = () => {
     const [data, setData] = useState([]);

@@ -2,16 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./style/style";
+
 // import logger from "./components/services/logServices";
-// logger.init();
+//logger.init();
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <CssBaseline />
+            {/* <ThemeProvider theme={theme}> */}
             <App />
+            {/* </ThemeProvider> */}
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")
