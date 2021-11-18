@@ -7,20 +7,19 @@ import { Switch, Route } from "react-router-dom";
 //import "react-toastify/dist/ReactToastify.css";
 import RegisterCompletion from "./components/userAccount/RegisterCompletion";
 
-
 const App = () => {
     return (
         <>
-            {/* <ToastContainer /> */ }
+            {/* <ToastContainer /> */}
             <Switch>
                 <Route
                     path='/registerCompletion'
-                    component={ RegisterCompletion }
+                    component={RegisterCompletion}
                 />
-                <Route path='/register' component={ CreateAccount } />
-                <Route path='/loginForm' component={ Login } />
-                <Route path='/userProfile' component={ UserProfile } />
-                <Route path='/' component={ CreateAccount } />
+                <Route path='/register' component={CreateAccount} />
+                <Route path='/login' component={Login} />
+                <Route path='/userProfile' component={UserProfile} />
+                <Route path='/' component={CreateAccount} />
             </Switch>
         </>
     );
