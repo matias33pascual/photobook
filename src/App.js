@@ -1,11 +1,12 @@
 import React from "react";
 import Login from "./components/userAccount/Login";
-import CreateAccount from "./components/userAccount/CreateAccount";
+import Register from "./components/userAccount/Register";
 import UserProfile from "./components/userAccount/UserProfile";
 import { Switch, Route } from "react-router-dom";
 //import { ToastContainer } from "react-toastify";
 //import "react-toastify/dist/ReactToastify.css";
 import RegisterCompletion from "./components/userAccount/RegisterCompletion";
+import TestAPI from "./components/test/TestAPI";
 
 const App = () => {
     return (
@@ -16,10 +17,10 @@ const App = () => {
                     path='/registerCompletion'
                     component={RegisterCompletion}
                 />
-                <Route path='/register' component={CreateAccount} />
+                <Route path='/register' component={Register} />
                 <Route path='/login' component={Login} />
                 <Route path='/userProfile' component={UserProfile} />
-                <Route path='/' component={CreateAccount} />
+                <Route path='/' component={TestAPI} />
             </Switch>
         </>
     );

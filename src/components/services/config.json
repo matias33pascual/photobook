@@ -1,6 +1,6 @@
 {
-	"apiURL":"http://localhost:5001/",
-	"createUser": "Users/create",
-	"registerUser": "Users/register",
+	"apiURL":"http://localhost:50000/",
+	"createUser": "users/create",
+	"registerUser": "users/register",
 	"loginUser": "connect/token"	
 }

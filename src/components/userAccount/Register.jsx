@@ -2,11 +2,11 @@ import { Button, TextField, Typography } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import { Modal } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
-import useUserData from "./../../hooks/useUserData";
-import useModal from "./../../hooks/useModal";
-import modalUserAccountStyle from "./../../style/modalUserAccountStyle";
+import useUserData from "../../hooks/useUserData";
+import useModal from "../../hooks/useModal";
+import modalUserAccountStyle from "../../style/modalUserAccountStyle";
 
-const CreateAccount = () => {
+const Register = () => {
     const createUserAccount = useUserData({
         firstName: "",
         lastName: "",
@@ -28,34 +28,31 @@ const CreateAccount = () => {
                     Creando tu cuenta
                 </Typography>
                 <form
-                    action=''
                     autoComplete='off'
                     onSubmit={createUserAccount.createHandleSubmit}>
                     <TextField
-                        autoFocus
-                        required
-                        name='firstName'
                         value={createUserAccount.userData.firstName}
                         onChange={createUserAccount.handleChange}
-                        variant='outlined'
+                        autoFocus
+                        required
                         label='Nombre'
+                        name='firstName'
+                        variant='outlined'
                         color='secondary'
                         fullWidth
-                        required
                         InputLabelProps={{
                             shrink: true,
                         }}
                         className={classes.field}
                     />
                     <TextField
-                        required
-                        name='lastName'
                         value={createUserAccount.userData.lastName}
                         onChange={createUserAccount.handleChange}
-                        variant='outlined'
-                        label='Apellido'
-                        color='secondary'
                         required
+                        label='Apellido'
+                        name='lastName'
+                        variant='outlined'
+                        color='secondary'
                         fullWidth
                         InputLabelProps={{
                             shrink: true,
@@ -63,14 +60,13 @@ const CreateAccount = () => {
                         className={classes.field}
                     />
                     <TextField
-                        required
-                        name='email'
                         value={createUserAccount.userData.email}
                         onChange={createUserAccount.handleChange}
-                        variant='outlined'
-                        label='Email'
-                        color='secondary'
                         required
+                        label='Email'
+                        name='email'
+                        variant='outlined'
+                        color='secondary'
                         fullWidth
                         InputLabelProps={{
                             shrink: true,
@@ -101,4 +97,4 @@ const CreateAccount = () => {
     );
 };
 
-export default CreateAccount;
+export default Register;

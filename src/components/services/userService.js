@@ -12,6 +12,8 @@ export function createUser(user) {
 }
 
 export function registerUser(user) {
+    console.log(user.token);
+
     return httpServices.post(api + config.registerUser, {
         email: user.email,
         password: user.password,
